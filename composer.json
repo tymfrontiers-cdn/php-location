@@ -1,0 +1,34 @@
+{
+  "name": "tymfrontiers-cdn/php-location",
+  "description": "Get visitor's basic location information",
+  "keywords": ["php", "location","tym","frontiers"],
+  "homepage": "https://github.com/tymfrontiers-cdn/php-location",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+      {
+          "name": "Sir Louis",
+          "email": "me@sirlouis.io",
+          "homepage": "https://sirlouis.io",
+          "role": "developer"
+      },
+      {
+          "name": "Tym Frontiers Ltd",
+          "email": "git@tymfrontiers.com",
+          "homepage": "https://tymfrontiers.com",
+          "role": "developer"
+      }
+  ],
+  "require": {
+    "php" : ">=5.3",
+    "tymfrontiers-cdn/php-session": ">=0.1@stable",
+    "tymfrontiers-cdn/php-multiform": ">=0.1@stable",
+    "victorybiz/geoip-location": ">=1.0@stable"
+  },
+  "require-dev": {},
+  "autoload": {
+      "psr-4": {
+          "TymFrontiers\\": "src/"
+      }
+  }
+}
