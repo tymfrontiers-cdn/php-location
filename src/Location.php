@@ -41,8 +41,8 @@ class Location{
     $this->currency_symbol = $info->getCurrencySymbol();
     $this->latitude = $info->getLatitude();
     $this->longitude = $info->getLongitude();
-    if( \defined('DATA_DB') ){
-      $db = DATA_DB;
+    if( \defined('MYSQL_DATA_DB') ){
+      $db = MYSQL_DATA_DB;
       $country_name = \strtolower($this->country);
       $country_code = \strtoupper($this->country_code);
       $state_name = \strtolower($this->state);
@@ -58,7 +58,7 @@ class Location{
         $this->city_code = $found[0]->city_code;
       }
     }else{
-      $this->errors['Location'][] = [3,256,'DATA_DB => Data storage database is not defined, to ensure better accuracy of location information, complete following steps: \r\n 1. Define constance \'DATA_DB\' storing database name. \r\n 2. Create database with defined name. \r\n 3. Create/Populate table: countries [fields]: id - int(11), iso2 - char(2) [ISO2 country code], name - varchar(150) country name. \r\n 4. Create/Populate table: states [fields]: id - int(11), name - char(30) state name, country_id - int(11). \r\n 5. Create/Populate table: cities [fields]: id - int(11), name - char(30) city name, state_id - int(11). ',__FILE__,__LINE__];
+      $this->errors['Location'][] = [3,256,'MYSQL_DATA_DB => Data storage database is not defined, to ensure better accuracy of location information, complete following steps: \r\n 1. Define constance \'MYSQL_DATA_DB\' storing database name. \r\n 2. Create database with defined name. \r\n 3. Create/Populate table: countries [fields]: id - int(11), iso2 - char(2) [ISO2 country code], name - varchar(150) country name. \r\n 4. Create/Populate table: states [fields]: id - int(11), name - char(30) state name, country_id - int(11). \r\n 5. Create/Populate table: cities [fields]: id - int(11), name - char(30) city name, state_id - int(11). ',__FILE__,__LINE__];
     }
   }
 
