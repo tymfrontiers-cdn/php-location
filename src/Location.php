@@ -45,7 +45,7 @@ class Location{
       $db = MYSQL_DATA_DB;
       $country_name = \strtolower($this->country);
       $country_code = \strtoupper($this->country_code);
-      $state_name = \strtolower($this->state);
+      $state_name = \strtolower(\str_ireplace([' state', 'state'],'',$this->state));
       $city_name = \strtolower($this->city);
       $sql = "SELECT
                      (SELECT code FROM `{$db}`.`state` WHERE LOWER(name) = '{$state_name}' LIMIT 1) AS state_code,
