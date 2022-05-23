@@ -30,7 +30,7 @@ class Location{
   function _instantiate(string $ip=''){
     $info = new \Victorybiz\GeoIPLocation\GeoIPLocation();
     if( !empty($ip) && \filter_var($ip,FILTER_VALIDATE_IP) ){
-      $info->setIP($id);
+      $info->setIP($ip);
     }
     $this->ip = $info->getIP();
     $this->city = $info->getCity();
@@ -43,10 +43,10 @@ class Location{
     $this->longitude = $info->getLongitude();
     if( \defined('MYSQL_DATA_DB') ){
       $db = MYSQL_DATA_DB;
-      $country_name = \strtolower($this->country);
-      $country_code = \strtoupper($this->country_code);
-      $state_name = \strtolower(\str_ireplace([' state', 'state'],'',$this->state));
-      $city_name = \strtolower($this->city);
+      $country_name = empty($this->country) ? null : \strtolower($this->country);
+      $country_code = empty($this->country_code) ? null : \strtoupper($this->country_code);
+      $state_name = empty($this->state) ? null : \strtolower($this->state);
+      $city_name = empty($this->city) ? null : \strtolower($this->city);
       $sql = "SELECT
                      (SELECT code FROM `{$db}`.`state` WHERE LOWER(name) = '{$state_name}' LIMIT 1) AS state_code,
                      (SELECT code FROM `{$db}`.`city` WHERE LOWER(name) = '{$city_name}' LIMIT 1) AS city_code
