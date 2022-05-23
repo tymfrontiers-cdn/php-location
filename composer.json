@@ -20,7 +20,6 @@
       }
   ],
   "require": {
-    "php" : ">=5.3",
     "tymfrontiers-cdn/php-session": ">=0.1@stable",
     "tymfrontiers-cdn/php-multiform": ">=0.1@stable",
     "victorybiz/geoip-location": "^1.0"
